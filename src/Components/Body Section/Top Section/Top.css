@@ -1,0 +1,75 @@
+.Bar{
+    height: 9vh;
+    width: 100%;
+    background-color: rgba(44, 35, 104, 1);
+    position:static;
+    display: flex;
+
+    justify-content:space-between;
+    border-bottom: 1px solid rgb(163, 150, 201);
+    
+}
+.parsllLogo{
+    /* width: 8.5%;
+    margin-top:0.2%;
+    margin-left: 1%;
+    border-radius: 5px; */
+    height: 5vh;
+    margin-top: 16px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+.searchBar{
+    /* padding: 5px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-left: 10px; */
+    padding: 0px;
+    border-radius: 12px;
+    margin-top: 21px;
+    margin-left: 11px;
+    margin-bottom: 20px;
+
+}
+
+.Icon{
+    color: rgb(26, 22, 22);
+    height: 1.5rem;
+    width: 1.5rem;
+    /* background-color: red; */
+    padding: 3px;
+    position: absolute;
+    box-sizing: border-box;
+    /* top: -37%; */
+    left: 150px;
+    transform: translateY(100%);
+    cursor: pointer;
+}
+.Icon:hover{
+    color: rgb(147, 55, 55);
+}
+
+.Icons{
+     /* display: flex; 
+      position:absolute;
+    align-items: flex-end; */
+    position: relative;
+    margin-right: 80px;
+    margin-top: 7px;
+    display: flex;
+
+}
+ .IconImage{
+position: relative;
+/* top:5px; */
+}
+.settings{
+    color: white;
+    width: 10%;
+    margin-top: 26px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.settings:hover{
+    color: antiquewhite;
+}

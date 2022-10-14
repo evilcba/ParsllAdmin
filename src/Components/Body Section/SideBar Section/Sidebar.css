@@ -1,0 +1,25 @@
+.sideBar{
+    height: 100vh;
+    width: 10%;
+    background-color: rgb(56, 48, 112);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+}
+.List{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.itemName{
+    color: whitesmoke;
+    padding: 15px;
+    /* text-align: center; */
+    /* border-bottom: 0.1px   solid rgb(163, 150, 201); */
+}
+.itemName:hover{
+    background-color: rgba(131, 113, 248, 0.145) ;
+    border-left:4px   solid rgb(226, 223, 236) ;
+}
+/* https://codesandbox.io/s/5v9wq?file=/src/components/Sidebar.js */
