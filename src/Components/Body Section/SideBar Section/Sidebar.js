@@ -10,14 +10,14 @@ const Sidebar = () => {
       {
         <section>
           <div className="sideBar">
-            {/* <div className="itemName">OverViews</div>
+            <div className="itemName">OverViews</div>
             <div className="itemName">Reports</div>
             <div className="itemName">Produts</div>
             <div className="itemName">Team</div>
             <div className="itemName">Message</div>
             <div className="itemName">Support</div>
-            <div className="itemName ">Logout</div> */}
-            <div>{SideBarData}</div>
+            <div className="itemName ">Logout</div>
+            {/* <div>{SideBarData}</div> */}
           </div>
         </section>
       }
