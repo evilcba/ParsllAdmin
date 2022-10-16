@@ -36,7 +36,10 @@
     transform: rotate(360deg);
   }
 } */
-.bar{
+/* .bar{
   display: flex;
   flex-direction: column;
+} */
+.Sidebars{
+  height: 100vh;
 }
