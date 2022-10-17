@@ -1,0 +1,17 @@
+.productTitle {
+    color: rgba(44, 35, 104, 1);
+    background-color:rgba(44, 35, 104, 0.11) ;
+}
+.Products{
+    width: 100%;
+}
+.tableWhole{
+    width: 60%;
+    margin-left: 15%;
+}
+.tableHead{
+    background-color:rgba(58, 46, 139, 0.719) ;
+}
+.tableName{
+    color: white;
+}
