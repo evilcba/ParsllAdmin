@@ -1,10 +1,11 @@
 import React from "react";
-import "./Products.css";
-const Products = () => {
+import "./Task.css";
+
+const Task = () => {
   return (
     <>
       <div className="Products">
-        <h4 className="productTitle mt-5 ps-5 mb-5">Products</h4>
+        <h4 className="productTitle mt-5 ps-5 mb-5">Tasks</h4>
         <div className="addProducts">
           <div>
             <form className="row g-3">
@@ -13,16 +14,7 @@ const Products = () => {
                   type="text"
                   className="form-control"
                   id="inputEmail4"
-                  placeholder="Product_Name"
-                />
-              </div>
-
-              <div className="col-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputAddress"
-                  placeholder="Producr_Price"
+                  placeholder="Task_Name"
                 />
               </div>
 
@@ -31,13 +23,13 @@ const Products = () => {
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  placeholder="Product_Description"
+                  placeholder="Task_Description"
                 ></textarea>
               </div>
 
               <div class="col-12">
                 <button type="submit" className="btn productButton">
-                  Add Product
+                  Add Tasks
                 </button>
               </div>
             </form>
@@ -48,16 +40,13 @@ const Products = () => {
             <thead className="tableHead">
               <tr>
                 <th scope="col" className="tableName">
-                  Product_Id
+                  Task_Id
                 </th>
                 <th scope="col" className="tableName">
-                  Product_Name
+                  Task_Name
                 </th>
                 <th scope="col" className="tableName">
-                  Product_Price
-                </th>
-                <th scope="col" className="tableName">
-                  Product_Description
+                  Task_Description
                 </th>
                 <th scope="col" className="tableName">
                   Action
@@ -68,8 +57,7 @@ const Products = () => {
               <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td></td>
                 <td>
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
@@ -77,9 +65,9 @@ const Products = () => {
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+
                 <td>@fat</td>
+                <td></td>
                 <td>
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
@@ -88,7 +76,6 @@ const Products = () => {
               <tr>
                 <th scope="row">3</th>
                 <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
                 <td>
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
@@ -102,4 +89,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Task;

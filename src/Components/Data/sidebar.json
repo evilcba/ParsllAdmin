@@ -19,7 +19,7 @@
         "childrens": [
             {
                 "title": "All Task",
-                "path": "/login"
+                "path": "/Task"
             }
           
           
@@ -31,7 +31,7 @@
         "childrens": [
             {
                 "title": "All orders",
-                "path": "/profile"
+                "path": "/Order"
             }
             
         ]
@@ -42,7 +42,7 @@
         "childrens": [
             {
                 "title": "All Users",
-                "path": "/search"
+                "path": "/User"
             }
         ]
     },
