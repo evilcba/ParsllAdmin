@@ -15,10 +15,10 @@ export const adminlogIn = (token) => {
 };
 export const logIn = async (email, password) => {
   try {
-    const response = (await axiosPost("user/login", {
+    const response = await axiosPost("user/login", {
       email,
       password,
-    }))  
+    });
     setAccessTokenToLocalStorage(response.data.accessToken);
     // window.location.href = "/";
     return response;
@@ -26,19 +26,14 @@ export const logIn = async (email, password) => {
     console.log(error);
   }
 };
-export const register = async (
-  email,
-  password,
-  full_name,
-  phone
-) => {
+export const register = async (email, password, full_name, phone) => {
   try {
-    const res = (await axiosPost("user/register", {
+    const res = await axiosPost("user/register", {
       full_name: full_name,
       email: email,
       password: password,
       phone: phone,
-    })) ;
+    });
     return res;
   } catch (err) {
     return err.response.data[0].message;
@@ -52,38 +47,26 @@ export const logOut = () => {
   return (window.location.href = "/login");
 };
 export const getAccessTokenFromLocalStorage = () => {
-  let accessToken = localStorage.getItem("userszpuolk1289a");
-  return accessToken;
-};
-export const setAccessTokenToLocalStorage = (token) => {
-  let accessToken = localStorage.setItem("userszpuolk1289a", token);
-  return accessToken;
-};
-export const getRefreshTokenFromLocalStorage = () => {
-  let refreshToken = localStorage.getItem("userszpuolk1289r");
-  return refreshToken;
-};
-export const setRefreshTokenToLocalStorage = (token) => {
-  let refreshToken = localStorage.setItem("userszpuolk1289r", token);
-  return refreshToken;
-};
-export const setAdminAccessTokenToLocalStorage = (token) => {
-  let accessToken = localStorage.setItem("adminszpuolk1289a", token);
+  let accessToken = localStorage.getItem("userszpuolk1289");
   return accessToken;
 };
 export const getAdminAccessTokenFromLocalStorage = () => {
-  let accessToken = localStorage.getItem("adminszpuolk1289a");
+  let accessToken = localStorage.getItem("adminszpuolk1289");
   return accessToken;
 };
+export const setAccessTokenToLocalStorage = (token) => {
+  let accessToken = localStorage.setItem("userszpuolk1289", token);
+  return accessToken;
+};
+export const setAdminAccessTokenToLocalStorage = (token) => {
+  let accessToken = localStorage.setItem("adminszpuolk1289", token);
+  return accessToken;
+};
+export const getRefreshTokenFromLocalStorage = () => {
+  let refreshToken = localStorage.getItem("userszpuolk1289");
+  return refreshToken;
+};
 export const getAdminRefreshTokenFromLocalStorage = () => {
-  let refreshToken = localStorage.getItem("adminszpuolk1289r");
+  let refreshToken = localStorage.getItem("adminszpuolk1289");
   return refreshToken;
 };
-export const setAdminRefreshTokenToLocalStorage = (token) => {
-  let refreshToken = localStorage.setItem("adminszpuolk1289r", token);
-  return refreshToken;
-};
-// export const getAdminRefreshTokenFromLocalStorage = () => {
-//   let refreshToken = localStorage.getItem("adminszpuolk1289a");
-//   return refreshToken;
-// };

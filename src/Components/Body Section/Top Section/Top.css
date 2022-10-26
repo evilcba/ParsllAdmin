@@ -14,6 +14,7 @@
     margin-top:0.2%;
     margin-left: 1%;
     border-radius: 5px; */
+    /* width: 5%; */
     height: 5vh;
     margin-top: 16px;
     margin-left: 10px;
@@ -46,7 +47,7 @@
     cursor: pointer;
 }
 .Icon:hover{
-    color: rgb(147, 55, 55);
+    color:rgba(44, 35, 104, 1);
 }
 
 .Icons{
@@ -65,10 +66,11 @@ position: relative;
 }
 .settings{
     color: white;
-    width: 10%;
+    /* width: 25%; */
     margin-top: 26px;
     margin-left: 15px;
     cursor: pointer;
+    /* color: black; */
 }
 .settings:hover{
     color: antiquewhite;

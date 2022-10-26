@@ -13,23 +13,8 @@
     color: #fff;
   }
   
-  /* .main{
-    display: flex;
-    height: 100vh;
-  } */
-  
-  
-  /* .container{
-    flex-grow: 1;
-    padding: 2em;
-    background-image: radial-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .8)), url('');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  } */
+
+
   .title{
     font-size: 3em;
   }
@@ -61,7 +46,13 @@
     background-color: rgba(44, 35, 104, 1);
     /* height: 100%; */
     /* overflow: auto; */
+<<<<<<< HEAD
     height:100vh;
+=======
+height:100vh;
+display: flex;
+flex-direction: column;
+>>>>>>> fed7b9d8edf5a457f38577604f848975816ac9fc
   }
   
   
