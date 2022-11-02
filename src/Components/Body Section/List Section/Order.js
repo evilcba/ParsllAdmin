@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Order.css";
 
 const Order = () => {
+  const[paymentMethod,setPaymentMethod]=useState('');
+  const[paymentPrice,setPaymentPrice]=useState('');
+  const[paymentStatus,setPaymentStatus]=useState('');
+
+  
   return (
     <>
       <div className="Products">
@@ -12,10 +17,7 @@ const Order = () => {
             <thead className="tableHead">
               <tr>
                 <th scope="col" className="tableName">
-                  Order_id
-                </th>
-                <th scope="col" className="tableName">
-                  Product_id
+                  User_id
                 </th>
                 <th scope="col" className="tableName">
                   Payment_method
@@ -25,11 +27,9 @@ const Order = () => {
                   Payment_price
                 </th>
                 <th scope="col" className="tableName">
-                  Order_description
+                  Payment_status
                 </th>
-                <th scope="col" className="tableName">
-                  Order_status
-                </th>
+              
                 <th scope="col" className="tableName">
                   Action
                 </th>
@@ -40,38 +40,15 @@ const Order = () => {
                 <th scope="row">10/18/2022</th>
                 <td>Documents</td>
                 <td>Rs 15,000</td>
-                <td>@mdo</td>
+             
                 <td>Inprogress</td>
-                <td></td>
+         
                 <td>
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">14/18/2022</th>
-                <td>Website</td>
-                <td>Rs 50,000</td>
-                <td>@fat</td>
-                <td>ongoing</td>
-                <td></td>
-                <td>
-                  <i className="bi bi-pen"></i>
-                  <i className="bi bi-trash3"></i>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">09/18/2022</th>
-                <td>Digital Marketing</td>
-                <td>Rs 35,000</td>
-                <td></td>
-                <td>completed</td>
-                <td></td>
-                <td>
-                  <i className="bi bi-pen"></i>
-                  <i className="bi bi-trash3"></i>
-                </td>
-              </tr>
+             
             </tbody>
           </table>
         </div>

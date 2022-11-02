@@ -1,7 +1,23 @@
 import React from "react";
+import { useState } from "react";
+import { axiosPost } from "../../Services/axiosIntercepor";
 import "./Task.css";
 
 const Task = () => {
+  const[Task_Name, setTaskName]=useState('');
+  const[Task_Description,setTaskDescription]=useState('');
+
+  const postTask =async()=>{
+    try{
+     const res = await axiosPost("api/v1/task/createTask",
+     Task_Name,
+     Task_Description);
+      
+    }catch(err){
+      console.log(err);
+    }
+  }
+
   return (
     <>
       <div className="Products">
@@ -15,6 +31,7 @@ const Task = () => {
                   className="form-control"
                   id="inputEmail4"
                   placeholder="Task_Name"
+                  onChange={(e)=>setTaskName(e.target.value)}
                 />
               </div>
 
@@ -24,11 +41,12 @@ const Task = () => {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Task_Description"
+                  onChange={(e)=>setTaskDescription(e.target.value)}
                 ></textarea>
               </div>
 
               <div class="col-12">
-                <button type="submit" className="btn productButton">
+                <button type="submit" className="btn productButton" onClick={postTask}>
                   Add Tasks
                 </button>
               </div>

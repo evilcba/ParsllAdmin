@@ -1,7 +1,19 @@
+import axios from "axios";
 import React from "react";
+import { useEffect,useState } from "react";
 import "./User.css";
 
 const User = () => {
+const [users,setUsers]=useState([]);
+
+useEffect(() =>{
+  axios.get("api/v1/user/findUser")
+  .then((res)=>{
+    setUsers(res.data);
+  
+  })
+},[])
+
   return (
     <>
       <div className="Products">
@@ -14,9 +26,9 @@ const User = () => {
                 <th scope="col" className="tableName">
                   User_id
                 </th>
-                <th scope="col" className="tableName">
+                {/* <th scope="col" className="tableName">
                   Register_date
-                </th>
+                </th> */}
                 <th scope="col" className="tableName">
                   Full_name
                 </th>
@@ -36,19 +48,23 @@ const User = () => {
                 </th>
               </tr>
             </thead>
+            {/* {console.log(users)} */}
             <tbody>
-              <tr>
-                <th scope="row">10/18/2022</th>
-                <td>Documents</td>
-                <td>Rs 15,000</td>
-                <td>@mdo</td>
-                <td>Inprogress</td>
+            {/* { users.map((Users,index) =>{ */}
+
+          
+              {/* <tr key={index}>
+                <th scope="row">{user_id}</th>
+                <td>{register_date}</td>
+                <td>{full_name}</td>
+                <td>{email}</td>
+                <td>{phone}</td>
                 <td></td>
                 <td>
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <th scope="row">14/18/2022</th>
                 <td>Website</td>
@@ -73,6 +89,7 @@ const User = () => {
                   <i className="bi bi-trash3"></i>
                 </td>
               </tr>
+                {/* })} */}
             </tbody>
           </table>
         </div>

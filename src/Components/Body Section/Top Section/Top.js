@@ -2,7 +2,7 @@ import React from "react";
 import "./Top.css";
 import parsllLogo from "../Images/parsllLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
 // import PageviewIcon from "@mui/icons-material/Pageview";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";

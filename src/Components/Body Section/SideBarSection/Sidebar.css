@@ -40,19 +40,16 @@
     color: #fff;
   }
   
+  
   .sidebar{
     width: 260px;
     flex-shrink: 0;
     background-color: rgba(44, 35, 104, 1);
     /* height: 100%; */
     /* overflow: auto; */
-<<<<<<< HEAD
-    height:100vh;
-=======
 height:100vh;
 display: flex;
 flex-direction: column;
->>>>>>> fed7b9d8edf5a457f38577604f848975816ac9fc
   }
   
   
