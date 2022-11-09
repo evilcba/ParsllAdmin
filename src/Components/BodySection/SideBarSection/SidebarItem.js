@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // import "./Sidebar.css";
 
 export default function SidebarItem({ item }) {
@@ -26,10 +27,10 @@ export default function SidebarItem({ item }) {
     );
   } else {
     return (
-      <a href={item.path || "#"} className="sidebar-item plain">
+      <Link to={item.path || "#"} className="sidebar-item plain">
         {item.icon && <i className={item.icon}></i>}
         {item.title}
-      </a>
+      </Link>
     );
   }
 }

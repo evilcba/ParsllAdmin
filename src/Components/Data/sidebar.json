@@ -1,64 +1,58 @@
 [
-    {
-        "title": "Products",
-        "icon": "bi bi-mailbox",
-        "childrens": [
-            {
-                "title": "All Products",
-                "icon": "bi-house-fill",
-                "path": "/Products"
-            }
-          
-         
-         
-        ]
-    },
-    {
-        "title": "Task",
-        "icon": "bi bi-card-checklist",
-        "childrens": [
-            {
-                "title": "All Task",
-                "path": "/Task"
-            }
-          
-          
-        ]
-    },
-    {
-        "title": "Order",
-        "icon": "bi bi-bookmark-plus-fill",
-        "childrens": [
-            {
-                "title": "All orders",
-                "path": "/Order"
-            }
-            
-        ]
-    },
-    {
-        "title": "Users info",
-        "icon": "bi-person-fill",
-        "childrens": [
-            {
-                "title": "All Users",
-                "path": "/User"
-            }
-        ]
-    },
-    {
+  {
+    "title": "Products",
+    "icon": "bi bi-mailbox",
+    "childrens": [
+      {
+        "title": "All Products",
+        "icon": "bi-house-fill",
+        "path": "/Products"
+      }
+    ]
+  },
+  {
+    "title": "Task",
+    "icon": "bi bi-card-checklist",
+    "childrens": [
+      {
+        "title": "All Task",
+        "path": "/Task"
+      }
+    ]
+  },
+  {
+    "title": "Order",
+    "icon": "bi bi-bookmark-plus-fill",
+    "childrens": [
+      {
+        "title": "All orders",
+        "path": "/Order"
+      }
+    ]
+  },
+  {
+    "title": "Users info",
+    "icon": "bi-person-fill",
+    "childrens": [
+      {
+        "title": "All Users",
+        "path": "/User"
+      }
+    ]
+  },
+  {
+    "title": "Employee",
+    "icon": "bi-person-fill",
+    "childrens": [
+      {
         "title": "Employee",
-        "icon": "bi-person-fill",
-        "childrens": [
-            {
-                "title": "Employee",
-                "path": "/User"
-            }
-        ]
-    },
-    {
-        "title": "Log Out",
-        "icon": "bi bi-box-arrow-left",
-        "path": "/support"
-    }
+        "path": "/employee"
+      }
+    ]
+  },
+  {
+    "title": "Log Out",
+    "icon": "bi bi-box-arrow-left",
+    "path": "/support"
+  }
 ]

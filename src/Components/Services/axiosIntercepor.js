@@ -1,11 +1,35 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import {
   getAccessTokenFromLocalStorage,
   getRefreshTokenFromLocalStorage,
   setAccessTokenToLocalStorage,
+  getAdminAccessTokenFromLocalStorage,
+  getAdminRefreshTokenFromLocalStorage,
+  setAdminRefreshTokenToLocalStorage,
+  setAdminAccessTokenToLocalStorage,
+  setRefreshTokenToLocalStorage,
+  getEmployeeAccessTokenFromLocalStorage,
+  getEmployeeRefreshTokenFromLocalStorage,
+  setEmployeeAccessTokenToLocalStorage,
+  setEmployeeRefreshTokenToLocalStorage,
+  adminlogOut,
+  logOut,
+  employeeLogOut,
 } from "./helpers";
+
+const responses = {
+  USERACCESS: "User AccessToken Expired",
+  ADMINACCESS: "Admin AccessToken Expired",
+  EMPLOYEEACCESS: "Employee AccessToken Expired",
+  USERREFRESH: "User RefreshToken Expired",
+  EMPLOYEEREFRESH: "Employee RefreshToken Expired",
+  ADMINREFRESH: "Admin RefreshToken Expired",
+};
+
+Object.freeze(responses);
+
 const instance = axios.create({
-  baseURL: "http://localhost:9090/api/v1/",
+  baseURL: "http://localhost:9494",
 });
 instance.interceptors.request.use(
   async (config) => {
@@ -18,21 +42,24 @@ instance.interceptors.request.use(
         return config;
       }
       if (config.headers !== undefined) {
-        if (config.url?.indexOf("refreshToken") > -1) {
+        if (config.url?.indexOf("user/refreshToken") > -1) {
           config.headers[
             "Authorization"
           ] = `Bearer ${getRefreshTokenFromLocalStorage()}`;
           return config;
         }
+        if (config.url?.indexOf("admin/refreshToken") > -1) {
+          config.headers[
+            "Authorization"
+          ] = `Bearer ${getAdminRefreshTokenFromLocalStorage()}`;
+          return config;
+        }
       }
     }
-    const token = getAccessTokenFromLocalStorage();
+    const adminToken = getAdminAccessTokenFromLocalStorage();
 
-    if (token) {
-      if (config.headers !== undefined) {
-        config.headers["Authorization"] = "Bearer " + token;
-      }
-    }
+    config.headers["Authorization"] = `Bearer ${adminToken}`;
+
     return config;
   },
 
@@ -48,18 +75,61 @@ instance.interceptors.response.use(
   function (error) {
     const originalRequest = error.config;
     const originalResponse = error.response;
-    originalRequest._retry = false;
-    if (originalResponse.status === 402 && !originalRequest._retry) {
+
+    if (originalResponse.data.message === responses.ADMINREFRESH) {
+      return adminlogOut();
+    }
+    if (originalResponse.data.message === responses.USERREFRESH) {
+      logOut();
+    }
+    if (originalResponse.data.message === responses.EMPLOYEEREFRESH) {
+      employeeLogOut();
+    }
+    // if (
+    //   originalResponse.status === 401 &&
+    //   !originalRequest._retry &&
+    //   originalResponse.data.message === responses.USERACCESS
+    // ) {
+    //   originalRequest._retry = true;
+    //   const refreshToken = getRefreshTokenFromLocalStorage();
+    //   return new Promise(function (resolve, reject) {
+    //     instance
+    //       .post("/api/v1/user/refreshToken", {
+    //         refreshToken: refreshToken,
+    //       })
+    //       .then((res) => {
+    //         if (res.status === 201) {
+    //           setAccessTokenToLocalStorage(res.data.accessToken);
+    //           setRefreshTokenToLocalStorage(res.data.refreshToken);
+    //           instance.defaults.headers.common["Authorization"] =
+    //             "Bearer " + getAccessTokenFromLocalStorage();
+    //           originalRequest.headers["Authorization"] =
+    //             "Bearer " + getAccessTokenFromLocalStorage();
+    //           resolve(axios(originalRequest));
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         reject(err);
+    //       });
+    //   });
+    // }
+    if (
+      originalResponse.status === 402 &&
+      !originalRequest._retry &&
+      originalResponse.data.message === responses.ADMINACCESS
+    ) {
       originalRequest._retry = true;
-      const refreshToken = getRefreshTokenFromLocalStorage();
+      const refreshToken = getAdminRefreshTokenFromLocalStorage();
       return new Promise(function (resolve, reject) {
         instance
-          .post("/admin/refreshToken", {
+          .post("/api/v1/admin/refreshToken", {
             refreshToken: refreshToken,
           })
           .then((res) => {
             if (res.status === 201) {
-              setAccessTokenToLocalStorage(res.data);
+              setAdminAccessTokenToLocalStorage(res.data.accessToken);
+              setAdminRefreshTokenToLocalStorage(res.data.refreshToken);
+
               instance.defaults.headers.common["Authorization"] =
                 "Bearer " + getAccessTokenFromLocalStorage();
               originalRequest.headers["Authorization"] =
@@ -72,29 +142,35 @@ instance.interceptors.response.use(
           });
       });
     }
-    if (originalResponse.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      const refreshToken = getRefreshTokenFromLocalStorage();
-      return new Promise(function (resolve, reject) {
-        instance
-          .post("/user/refreshToken", {
-            refreshToken: refreshToken,
-          })
-          .then((res) => {
-            if (res.status === 201) {
-              setAccessTokenToLocalStorage(res.data);
-              instance.defaults.headers.common["Authorization"] =
-                "Bearer " + getAccessTokenFromLocalStorage();
-              originalRequest.headers["Authorization"] =
-                "Bearer " + getAccessTokenFromLocalStorage();
-              resolve(axios(originalRequest));
-            }
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    }
+
+    // if (
+    //   originalResponse.status === 403 &&
+    //   !originalRequest._retry &&
+    //   originalResponse.data.message === responses.EMPLOYEEACCESS
+    // ) {
+    //   originalRequest._retry = true;
+    //   const refreshToken = getEmployeeRefreshTokenFromLocalStorage();
+    //   return new Promise(function (resolve, reject) {
+    //     instance
+    //       .post("/api/v1/employee/refreshToken", {
+    //         refreshToken: refreshToken,
+    //       })
+    //       .then((res) => {
+    //         if (res.status === 201) {
+    //           setEmployeeAccessTokenToLocalStorage(res.data.accessToken);
+    //           setEmployeeRefreshTokenToLocalStorage(res.data.refreshToken);
+    //           instance.defaults.headers.common["Authorization"] =
+    //             "Bearer " + getAccessTokenFromLocalStorage();
+    //           originalRequest.headers["Authorization"] =
+    //             "Bearer " + getAccessTokenFromLocalStorage();
+    //           resolve(axios(originalRequest));
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         reject(err);
+    //       });
+    //   });
+    // }
     if (!originalRequest._retry) {
       originalRequest._retry = true;
       return Promise.reject(error);
@@ -103,11 +179,7 @@ instance.interceptors.response.use(
   }
 );
 
-export const axiosGet = (uri, params) =>
-  instance.get(uri, params);
-export const axiosPost = (uri, params) =>
-  instance.post(uri, params);
-export const axiosDelete = (uri, params) =>
-  instance.delete(uri, params);
-export const axiosPut = (uri, params) =>
-  instance.put(uri, params);
+export const axiosGet = (uri, params) => instance.get(uri, params);
+export const axiosPost = (uri, params) => instance.post(uri, params);
+export const axiosDelete = (uri, params) => instance.delete(uri, params);
+export const axiosPut = (uri, params) => instance.put(uri, params);

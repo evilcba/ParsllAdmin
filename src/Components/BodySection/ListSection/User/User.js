@@ -1,18 +1,24 @@
 import axios from "axios";
 import React from "react";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import { axiosGet } from "../../../Services/axiosIntercepor";
 import "./User.css";
 
 const User = () => {
-const [users,setUsers]=useState([]);
+  const [users, setUsers] = useState([]);
 
-useEffect(() =>{
-  axios.get("api/v1/user/findUser")
-  .then((res)=>{
-    setUsers(res.data);
-  
-  })
-},[])
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await axiosGet("api/v1/user/getAllUsers", {});
+        setUsers(response.data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -26,9 +32,7 @@ useEffect(() =>{
                 <th scope="col" className="tableName">
                   User_id
                 </th>
-                {/* <th scope="col" className="tableName">
-                  Register_date
-                </th> */}
+
                 <th scope="col" className="tableName">
                   Full_name
                 </th>
@@ -40,7 +44,7 @@ useEffect(() =>{
                   Phone
                 </th>
                 <th scope="col" className="tableName">
-                  Password
+                  Register_date
                 </th>
 
                 <th scope="col" className="tableName">
@@ -50,22 +54,26 @@ useEffect(() =>{
             </thead>
             {/* {console.log(users)} */}
             <tbody>
-            {/* { users.map((Users,index) =>{ */}
-
-          
-              {/* <tr key={index}>
-                <th scope="row">{user_id}</th>
-                <td>{register_date}</td>
-                <td>{full_name}</td>
-                <td>{email}</td>
-                <td>{phone}</td>
-                <td></td>
-                <td>
-                  <i className="bi bi-pen"></i>
-                  <i className="bi bi-trash3"></i>
-                </td>
-              </tr> */}
-              <tr>
+              {users.map(
+                (
+                  { user_id, register_date, full_name, email, phone },
+                  index
+                ) => (
+                  <tr key={index}>
+                    <th scope="row">{user_id}</th>
+                    <td>{full_name}</td>
+                    <td>{email}</td>
+                    <td>{phone}</td>
+                    <td>{register_date}</td>
+                    <td></td>
+                    <td>
+                      <i className="bi bi-pen"></i>
+                      <i className="bi bi-trash3"></i>
+                    </td>
+                  </tr>
+                )
+              )}
+              {/* <tr>
                 <th scope="row">14/18/2022</th>
                 <td>Website</td>
                 <td>Rs 50,000</td>
@@ -88,8 +96,8 @@ useEffect(() =>{
                   <i className="bi bi-pen"></i>
                   <i className="bi bi-trash3"></i>
                 </td>
-              </tr>
-                {/* })} */}
+              </tr> */}
+              {/* })} */}
             </tbody>
           </table>
         </div>

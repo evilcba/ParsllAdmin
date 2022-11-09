@@ -1,0 +1,36 @@
+.taskTitle {
+  background-color: black;
+}
+.productTitle {
+  color: rgba(44, 35, 104, 1);
+  background-color: rgba(44, 35, 104, 0.11);
+}
+.Products {
+  width: 100%;
+}
+.tableWhole {
+  width: 90%;
+  /* margin-left: 15%; */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+}
+.tableHead {
+  background-color: rgba(58, 46, 139, 0.719);
+}
+.tableName {
+  color: white;
+}
+.productName {
+  color: burlywood;
+}
+.productButton {
+  background-color: rgba(58, 46, 139, 0.719);
+}
+.productButton:hover {
+  background-color: rgba(101, 14, 14, 0.77);
+}
+.row {
+  display: block;
+  margin-left: 5%;
+}
